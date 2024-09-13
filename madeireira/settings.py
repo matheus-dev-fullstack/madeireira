@@ -128,3 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Config auth
 
 AUTH_USER_MODEL = 'usuarios.Users'
+
+# Role permissions
+
+ROLEPERMISSIONS_MODULE = 'madeireira.roles'
