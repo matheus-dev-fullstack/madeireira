@@ -43,3 +43,7 @@ def login(request):
         
         auth.login(request, user)
         return HttpResponse('Usuário logado com sucesso')
+    
+def logout(request):
+    request.session.flush()
+    return redirect(reverse('login'))
