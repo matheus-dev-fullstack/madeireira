@@ -17,7 +17,7 @@ def cadastrar_vendedor(request):
             # TODO: utilizar messages do django
             return HttpResponse('Já existe um vendedor com este email')
         
-        user = Users.objects.create_user(username=email, email=email, password=senha)
+        user = Users.objects.create_user(username=email, email=email, password=senha, cargo='V')
         
         # TODO: Redirecionar com uma mensagem
         return HttpResponse('Vendedor criado com sucesso')
