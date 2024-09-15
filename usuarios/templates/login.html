@@ -7,6 +7,13 @@
 {% block 'body' %}
 
     <div class="container">
+        {% if messages  %}
+            <br />
+            {% for message in messages %}
+                <div class="alert {{message.tags}}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        
         <form action="{% url 'login' %}" method="POST" class="mt-4"> {% csrf_token %} 
             <label>Email</label>
             <input type="email" placeholder="Digite seu E-mail" name="email" class="form-control" required></input>

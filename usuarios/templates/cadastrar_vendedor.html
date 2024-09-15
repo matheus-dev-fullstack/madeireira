@@ -41,7 +41,13 @@
                         <th scope="row">{{vendedor.first_name}}</th>
                         <td>{{vendedor.last_name}}</td>
                         <td>{{vendedor.email}}</td>
-                        <td>{{vendedor.last_login}}</td>
+                        <td>
+                            {% if not vendedor.last_login %}
+                                Nunca logou
+                            {% else  %}
+                                {{vendedor.last_login}}
+                            {% endif %}
+                        </td>
                         <td><a href="{% url 'excluir_usuario' vendedor.id %}" class="btn btn-danger">EXCLUIR</a></td>
                     </tr>
                 {% endfor %}

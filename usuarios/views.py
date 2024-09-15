@@ -20,13 +20,13 @@ def cadastrar_vendedor(request):
         user = Users.objects.filter(email=email)
         
         if user.exists():
-            # TODO: utilizar messages do django
-            return HttpResponse('Já existe um vendedor com este email')
+            messages.add_message(request, messages.ERROR, 'Já existe um vendedor com este email.')
+            return redirect(reverse('cadastrar_vendedor'))
         
         user = Users.objects.create_user(username=email, email=email, password=senha, cargo='V')
         
-        # TODO: Redirecionar com uma mensagem
-        return HttpResponse('Vendedor criado com sucesso')
+        messages.add_message(request, messages.SUCCESS, 'Vendedor criado com sucesso.')
+        return redirect(reverse('cadastrar_vendedor'))
     
 def login(request):
     if request.method == "GET":
@@ -41,8 +41,8 @@ def login(request):
         user = auth.authenticate(username=login, password=senha)
         
         if not user:
-            # TODO: Redirecionar com mensagem de erro
-            return HttpResponse('Usuário inválido')
+            messages.add_message(request, messages.ERROR, 'Usuário ou senha inválidos')
+            return redirect(reverse('login'))
         
         auth.login(request, user)
         return HttpResponse('Usuário logado com sucesso')
