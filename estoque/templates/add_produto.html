@@ -1,0 +1,33 @@
+{%  extends 'base.html' %}
+
+{% block 'title' %}
+    Login
+{% endblock %} 
+
+{% block 'body' %}
+
+    <form class="container d-flex flex-column" action="{% url 'add_produto' %}" method='POST' enctype='multipart/form-data'>
+        {% csrf_token %}
+        <label>Imagens:</label>
+        <input type='file' name="imagens" multiple />
+        <label>Nome:</label>
+        <input type='text' name="nome" multiple />
+        <label>Selecione a categoria do produto</label>
+        <select name='categoria' >
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.titulo }}</option>
+            {% endfor %}
+        </select>
+        <label>Estoque inicial:</label>
+        <input type='number' name="quantidade" />
+        <label>Preço de compra:</label>
+        <input type='number' name="preco_compra" />
+        <label>Preço de venda:</label>
+        <input type='number' name="preco_venda" />
+
+        <button type="submit">Cadastrar</button
+
+    </form>    
+
+{% endblock %}
+
