@@ -8,6 +8,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.contrib import messages
 
 def add_produto(request):
 
@@ -50,6 +51,8 @@ def add_produto(request):
             
             img = Imagem(imagem = img_final, produto=produto)
             img.save()
-        
+            
+        messages.add_message(request, messages.SUCCESS, 'Produto cadastrado com sucesso.')
+
         return redirect(reverse('add_produto'))
         
