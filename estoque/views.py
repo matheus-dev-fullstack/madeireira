@@ -6,6 +6,8 @@ from datetime import date
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import sys
+from django.shortcuts import redirect
+from django.urls import reverse
 
 def add_produto(request):
 
@@ -49,5 +51,5 @@ def add_produto(request):
             img = Imagem(imagem = img_final, produto=produto)
             img.save()
         
-        return HttpResponse('Foi')
+        return redirect(reverse('add_produto'))
         

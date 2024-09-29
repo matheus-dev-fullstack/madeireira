@@ -1,33 +1,36 @@
 {%  extends 'base.html' %}
 
 {% block 'title' %}
-    Login
+    Cadastrar Produto
 {% endblock %} 
 
 {% block 'body' %}
 
-    <form class="container d-flex flex-column" action="{% url 'add_produto' %}" method='POST' enctype='multipart/form-data'>
-        {% csrf_token %}
-        <label>Imagens:</label>
-        <input type='file' name="imagens" multiple />
-        <label>Nome:</label>
-        <input type='text' name="nome" multiple />
-        <label>Selecione a categoria do produto</label>
-        <select name='categoria' >
-            {% for categoria in categorias %}
-                <option value="{{ categoria.id }}">{{ categoria.titulo }}</option>
-            {% endfor %}
-        </select>
-        <label>Estoque inicial:</label>
-        <input type='number' name="quantidade" />
-        <label>Preço de compra:</label>
-        <input type='number' name="preco_compra" />
-        <label>Preço de venda:</label>
-        <input type='number' name="preco_venda" />
+    <div class="container">
+        <h3 class="mt-4">Cadastrar Produto</h3>
+        <form class="d-flex flex-column mt-3" action="{% url 'add_produto' %}" method='POST' enctype='multipart/form-data'>
+            {% csrf_token %}
+            <label class="mt-2">Nome:</label>
+            <input class="form-control"  type='text' name="nome" multiple />
+            <label>Imagens:</label>
+            <input class="form-control" type='file' name="imagens" multiple />
+            <label class="mt-2">Selecione a categoria do produto</label>
+            <select class="form-control" name='categoria' >
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}">{{ categoria.titulo }}</option>
+                {% endfor %}
+            </select>
+            <label class="mt-2">Estoque inicial:</label>
+            <input class="form-control"  type='number' name="quantidade" />
+            <label class="mt-2">Preço de compra:</label>
+            <input class="form-control"  type='number' name="preco_compra" />
+            <label class="mt-2">Preço de venda:</label>
+            <input class="form-control"  type='number' name="preco_venda" />
 
-        <button type="submit">Cadastrar</button
+            <button class="btn btn-success mt-3" type="submit">Salvar</button
 
-    </form>    
+        </form>   
+    </div> 
 
 {% endblock %}
 
