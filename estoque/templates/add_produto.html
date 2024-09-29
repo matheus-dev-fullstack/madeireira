@@ -1,4 +1,5 @@
 {%  extends 'base.html' %}
+{% load filters %}
 
 {% block 'title' %}
     Cadastrar Produto
@@ -38,6 +39,22 @@
             <button class="btn btn-success mt-3" type="submit">Salvar</button
 
         </form>   
+        <hr style="color: #6c757d;" />
+        <div class="listar_produtos">
+            {% for produto in produtos %}
+                <div class="bg-dark card" style="width: 18rem;">
+                    {% if produto|get_first_image %}
+                    <img width="100%" class="card-img-top" src="{{ produto|get_first_image }}" alt="Card image cap">
+                    {% endif %}
+                    <div class="card-body">
+                    <h5 class="card-title">{{ produto.nome }}</h5>
+                    <span class="badge badge-info">{{ produto.categoria }}</span>
+                    {% comment %} <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> {% endcomment %}
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div> 
 
 {% endblock %}

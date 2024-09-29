@@ -14,7 +14,9 @@ def add_produto(request):
 
     if request.method == "GET":
         categoria = Categoria.objects.all()
-        return render(request, 'add_produto.html', {'categorias': categoria})
+        produtos = Produto.objects.all()
+        
+        return render(request, 'add_produto.html', {'categorias': categoria, 'produtos': produtos})
     elif request.method == "POST":
         nome = request.POST.get('nome')
         categoria= request.POST.get('categoria')
