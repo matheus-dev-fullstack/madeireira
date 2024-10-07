@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Categoria,Produto,Imagem
+from rolepermissions.decorators import has_permission_decorator
 from django.http import HttpResponse
 from PIL import Image, ImageDraw
 from datetime import date
@@ -10,6 +11,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib import messages
 
+@has_permission_decorator('cadastrar_produtos')
 def add_produto(request):
 
     if request.method == "GET":
