@@ -13,7 +13,7 @@ class Produto(models.Model):
     quantidade = models.FloatField(default=0)
     preco_compra = models.FloatField(default=0)   # o CORRETO SERIA preco_compra = models.BinaryField()
     preco_venda = models.FloatField(default=0)
-    slug = models.SlugField(unique=True)  
+    slug = models.SlugField(unique=True, blank=True, null=True)  
     
     def __str__(self):
         return self.nome
@@ -21,6 +21,8 @@ class Produto(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.nome)
+        
+        return super().save(*args, **kwargs)
     
     def gerar_desconto(self, deconto):
         return self.preco_venda - ((self.preco_venda * deconto) /100)
