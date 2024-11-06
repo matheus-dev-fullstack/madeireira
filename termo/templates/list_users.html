@@ -1,0 +1,10 @@
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% block title %}Pagina Inicial{% endblock %}
+
+{% block content %}
+	{% for user in users %}
+		<p>{{ user.nome }}</p>
+	{% endfor %}
+	<h1>List_User</h1>
+{% endblock %}

@@ -25,11 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w^+5mnp05pjh5*dpk9dko@-ui58sunas*eag^b2v-@b1tt+0sp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'rolepermissions',
-    'estoque',
+    'termo',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +68,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         'libraries': {
-            'filters': 'estoque.templatetags.filters',
+            # 'filters': 'estoque.templatetags.filters',
         }    
         
         },
@@ -124,9 +123,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'), )
 STATIC_ROOT = os.path.join('static')
+STATIC_URL = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'), )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

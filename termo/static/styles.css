@@ -1,0 +1,85 @@
+body {
+    background-color: #d8d6d6;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    position: absolute;
+    left: 40;
+    top: 40;
+}
+
+.print-button {
+    background-color: rgb(228, 228, 228);
+    height: 26px;
+    /* width: 40px; */
+    z-index: 100;
+}
+
+.icon {
+    /* color: yellow; */
+    height: 22px;
+    width: 22px;
+}
+
+.container {
+    /* margin-top: 20px; */
+    background-color: white;
+    margin-bottom: 60px;
+    max-width: 800px;
+}
+
+img {
+    object-fit: contain;
+    height: 100%;
+    width: 148px;
+}
+
+header {
+    height: 58px;
+}
+
+.header-info {
+    margin-block: auto;
+    color: rgb(196, 195, 195);
+    align-items: center;
+}
+
+.title {
+    margin-top: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+}
+
+p, li {
+    font-size: 12px;
+    text-align: justify;
+}
+
+.txt-sm {
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.row-description {
+    height: 50;
+}
+
+.description {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+thead {
+    padding: 0;
+    height: 6px;
+}
+
+.signature {
+    border-top: 1px solid #000;
+    width: 240px;
+}

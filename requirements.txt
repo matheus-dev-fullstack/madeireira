@@ -8,6 +8,7 @@ colorama==0.4.6
 crashtest==0.4.1
 distlib==0.3.8
 Django==5.0.6
+xhtml2pdf==0.2.16
 django-debug-toolbar==4.3.0
 django-extensions==3.2.3
 django-rest-framework==0.1.0

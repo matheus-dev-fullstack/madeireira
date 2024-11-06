@@ -14,10 +14,10 @@ def cadastrar_vendedor(request):
         vendedores = Users.objects.filter(cargo='V')
         return render(request, 'cadastrar_vendedor.html', {'vendedores': vendedores} )
     if request.method == 'POST':
-        nome = request.POST.get('nome')
+        username = request.POST.get('username')
         sobrenome = request.POST.get('sobrenome')
         email = request.POST.get('email')
-        senha = request.POST.get('senha')
+        password = request.POST.get('password')
         
         
         # TODO: Fazer validações dos dados
@@ -27,7 +27,7 @@ def cadastrar_vendedor(request):
             messages.add_message(request, messages.ERROR, 'Já existe um vendedor com este email.')
             return redirect(reverse('cadastrar_vendedor'))
         
-        user = Users.objects.create_user(username=email, email=email, password=senha, first_name=nome, last_name=sobrenome, cargo='V')
+        user = Users.objects.create_user(username=username, email=email, password=password, first_name=nome, last_name=sobrenome, cargo='V')
         
         messages.add_message(request, messages.SUCCESS, 'Vendedor criado com sucesso.')
         return redirect(reverse('cadastrar_vendedor'))
@@ -35,21 +35,22 @@ def cadastrar_vendedor(request):
 def login(request):
     if request.method == "GET":
         if request.user.is_authenticated: 
-            return redirect(reverse('plataforma'))
+            return redirect(reverse('termos'))
         return render(request, 'login.html')
     
     elif request.method == "POST":
-        login = request.POST.get('email')
-        senha = request.POST.get('senha')
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         
-        user = auth.authenticate(username=login, password=senha)
+        user = auth.authenticate(username=username, password=password)
         
         if not user:
             messages.add_message(request, messages.ERROR, 'Usuário ou senha inválidos')
             return redirect(reverse('login'))
         
         auth.login(request, user)
-        return HttpResponse('Usuário logado com sucesso')
+        # return HttpResponse('Usuário logado com sucesso')
+        return redirect(reverse('termos'))
     
 def logout(request):
     request.session.flush()
